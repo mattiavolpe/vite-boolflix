@@ -3,6 +3,7 @@
 header {
   position: sticky;
   top: 0;
+  z-index: 1;
   background: linear-gradient(180deg, #000000, $dark);
   box-shadow: 0 0 8px 1px $medium;
 }
