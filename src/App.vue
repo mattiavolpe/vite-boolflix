@@ -18,6 +18,7 @@ export default {
       <h2>Movies: </h2>
     </li>
     <li v-for="(movie, index) in state.fetchedMovies">
+      <img v-if="movie.poster_path" :src="`${state.coverBaseUrl}${movie.poster_path}`" :alt="`${movie.title} cover image`">
       <h4>Movie {{ index }}</h4>
       <p>Title: {{ movie.title }}</p>
       <p v-if="movie.title != movie.original_title">Original title: {{ movie.original_title }}</p>
@@ -32,6 +33,7 @@ export default {
       <h2>Tv Shows: </h2>
     </li>
     <li v-for="(tvShow, index) in state.fetchedTvShows">
+      <img v-if="tvShow.poster_path" :src="`${state.coverBaseUrl}${tvShow.poster_path}`" :alt="`${tvShow.title} cover image`">
       <h4>Tv Show {{ index }}</h4>
       <p>Title: {{ tvShow.name }}</p>
       <p v-if="tvShow.name != tvShow.original_name">Original title: {{ tvShow.original_name }}</p>

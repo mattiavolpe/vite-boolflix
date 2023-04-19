@@ -4,6 +4,7 @@ import axios from "axios"
 export const state = new reactive({
   searchMovieBaseApi: "https://api.themoviedb.org/3/search/movie",
   searchTvShowBaseApi: "https://api.themoviedb.org/3/search/tv",
+  coverBaseUrl: "https://image.tmdb.org/t/p/w342",
   apiKey: "47de7fcc53f94d3e0e183ea972c73ff3",
   searchText: "",
   fetchedMovies: [],
