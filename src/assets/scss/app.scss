@@ -1,5 +1,6 @@
 @use "./../../../node_modules/bootstrap/scss/bootstrap.scss";
+@use "./partials/_variables.scss" as *;
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font_family;
 }
