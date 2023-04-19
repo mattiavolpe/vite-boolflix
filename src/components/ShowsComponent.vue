@@ -1,6 +1,5 @@
 <script>
 import { state } from "./../state.js"
-import { convertScore } from "./../assets/functions/convertScore.js"
 import SingleShow from "./SingleShow.vue"
 export default {
   name: "ShowsComponent",
