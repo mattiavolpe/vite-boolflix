@@ -19,6 +19,23 @@
     margin: 0 auto;
     padding: 0.5rem 0.75rem;
     display: none;
+
+    button {
+      border: none;
+      margin: 8px 8px 0;
+      width: 40%;
+      border-radius: 8px;
+      background-color: $light;
+      color: $dark;
+      font-weight: 500;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: 0.15s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   &:hover > img {

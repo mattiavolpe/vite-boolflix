@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="header_right_section d-flex align-items-center">
+  <div class="header_right_section d-flex align-items-center py-2">
     <input @keyup.enter="state.fetchMovies(), state.fetchTvShows()" v-model.trim="state.searchText" class="px-3" type="search" placeholder="Search movies / tv shows">
     <button @click="state.fetchMovies(), state.fetchTvShows()" class="px-3">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
