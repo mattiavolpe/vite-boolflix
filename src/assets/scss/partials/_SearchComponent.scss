@@ -1,0 +1,31 @@
+@use "./_variables.scss" as *;
+
+.header_right_section {
+  min-width: 250px;
+  max-width: 100%;
+
+  input,
+  button {
+    background-color: $light;
+    color: $dark;
+    border: 0;
+    cursor: pointer;
+  }
+
+  input {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid $dark;
+    min-width: 200px;
+  }
+
+  button {
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+}

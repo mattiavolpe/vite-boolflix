@@ -1,0 +1,8 @@
+@use "./_variables.scss" as *;
+
+header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, #000000, $dark);
+  box-shadow: 0 0 8px 1px $medium;
+}

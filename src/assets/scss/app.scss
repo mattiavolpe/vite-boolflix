@@ -1,5 +1,7 @@
 @use "./../../../node_modules/bootstrap/scss/bootstrap.scss";
 @use "./partials/_variables.scss" as *;
+@use "./partials/_AppHeader.scss";
+@use "./partials/_SearchComponent.scss";
 
 body {
   font-family: $font_family;
