@@ -1,0 +1,6 @@
+@use "./_variables.scss" as *;
+
+footer {
+  background: linear-gradient(180deg, $dark, #000000);
+  color: $light;
+}

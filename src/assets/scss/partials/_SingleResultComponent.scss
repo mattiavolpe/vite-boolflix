@@ -1,0 +1,31 @@
+@use "./_variables.scss" as *;
+
+.single_result {
+
+  & > img {
+    box-shadow: -4px 4px 8px 0 $medium;
+  }
+
+  .infos {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: calc(100% - 0.5rem);
+    max-width: 342px;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    margin: 0 auto;
+    padding: 0.5rem 0.75rem;
+    display: none;
+  }
+
+  &:hover > img {
+    opacity: 0.1;
+  }
+
+  &:hover .infos {
+    display: block;
+  }
+}

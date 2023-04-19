@@ -3,4 +3,22 @@
 main {
   background-color: $dark;
   color: $light;
+  // Heights to consider: header and footer
+  height: calc(100vh - 108px - 80px);
+  height: calc(100svh - 108px - 80px);
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 422px) {
+  main {
+    height: calc(100vh - 108px - 56px);
+    height: calc(100svh - 108px - 56px);
+  }
+}
+
+@media screen and (min-width: 549px) {
+  main {
+    height: calc(100vh - 82px - 56px);
+    height: calc(100svh - 82px - 56px);
+  }
 }
