@@ -58,7 +58,6 @@ export const state = new reactive({
     }
     this.lastSearched = this.searchText.toLowerCase();
     this.activeMoviePage = 1;
-
     let url = this.setUrl("movie");
     this.sendRequest("movie", url);
     this.currentMovieGenre = "";
@@ -70,7 +69,6 @@ export const state = new reactive({
     }
     this.lastSearched = this.searchText.toLowerCase();
     this.activeTvShowPage = 1;
-
     let url = this.setUrl("tvShow");
     this.sendRequest("tvShow", url);
     this.currentTvShowGenre = "";
