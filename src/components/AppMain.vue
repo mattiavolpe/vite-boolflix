@@ -1,14 +1,12 @@
 <script>
 import { state } from "./../state.js"
 import LoaderComponent from "./LoaderComponent.vue"
-import MoviesComponent from "./MoviesComponent.vue"
-import ShowsComponent from "./ShowsComponent.vue"
+import MoviesShows from "./MoviesShows.vue"
 export default {
   name: "AppMain",
   components: {
     LoaderComponent,
-    MoviesComponent,
-    ShowsComponent,
+    MoviesShows,
   },
   data() {
     return {
@@ -22,8 +20,8 @@ export default {
   <main class="py-3">
     <div class="container">
       <LoaderComponent :loading="state.loading"></LoaderComponent>
-      <MoviesComponent></MoviesComponent>
-      <ShowsComponent></ShowsComponent>
+      <MoviesShows :type="'movie'"></MoviesShows>
+      <MoviesShows :type="'tvShow'"></MoviesShows>
     </div>
   </main>
 </template>
