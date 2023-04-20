@@ -1,4 +1,5 @@
 <script>
+import { state } from "./state.js"
 import AppHeader from "./components/AppHeader.vue"
 import AppMain from "./components/AppMain.vue"
 import AppFooter from "./components/AppFooter.vue"
@@ -10,6 +11,17 @@ export default {
     AppMain,
     AppFooter,
   },
+  data() {
+    return {
+      state,
+    }
+  },
+  mounted() {
+    this.state.fetchMovies();
+    this.state.fetchTvShows();
+    this.state.fetchGenres("movie");
+    this.state.fetchGenres("tvShow");
+  }
 }
 </script>
 

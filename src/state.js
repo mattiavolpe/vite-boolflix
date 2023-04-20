@@ -123,8 +123,3 @@ export const state = new reactive({
     })
   }
 })
-
-state.fetchMovies();
-state.fetchTvShows();
-state.fetchGenres("movie");
-state.fetchGenres("tvShow");
