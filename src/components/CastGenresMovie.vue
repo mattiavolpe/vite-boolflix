@@ -1,8 +1,8 @@
 <script>
-import { state } from "./../state.js"
+import { state } from "../state.js"
 import axios from "axios"
 export default {
-  name: "CastGenres",
+  name: "CastGenresMovie",
   props: {
     movie: Object,
   },

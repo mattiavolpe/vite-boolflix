@@ -1,11 +1,13 @@
 <script>
+import LanguageComponent from "./LanguageComponent.vue";
 import ScoreComponent from "./ScoreComponent.vue"
-import CastGenres from "./CastGenres.vue"
+import CastGenresMovie from "./CastGenresMovie.vue"
 export default {
   name: "MovieInfos",
   components: {
+    LanguageComponent,
     ScoreComponent,
-    CastGenres,
+    CastGenresMovie,
   },
   props: {
     movie: Object,
@@ -22,11 +24,8 @@ export default {
       <p class="m-0">{{ movie.overview }}</p>
       <hr class="my-1">
     </div>
-    <p class="d-flex align-items-center justify-content-center mb-2">Language:
-      <img class="ms-2" :src="`https://flagcdn.com/32x24/${movie.original_language}.png`" :alt="`${movie.original_language} flag`">
-    </p>
+    <LanguageComponent :lang="movie.original_language"></LanguageComponent>
     <ScoreComponent :vote="movie.vote_average"></ScoreComponent>
-    <CastGenres :movie="movie"></CastGenres>
-    
+    <CastGenresMovie :movie="movie"></CastGenresMovie>
   </div>
 </template>
