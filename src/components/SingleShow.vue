@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <li class="single_result col text-center position-relative mb-3">
+  <li v-if="tvShow.genre_ids.includes(state.currentTvShowGenre) || state.currentTvShowGenre === ''" class="single_result col text-center position-relative mb-3">
     <img class="img-fluid h-100" :src="tvShow.poster_path ? `${state.coverBaseUrl}${tvShow.poster_path}` : imgUrl" :alt="`${tvShow.title} cover image`">
     <ShowInfos :tvShow="tvShow"></ShowInfos>
   </li>

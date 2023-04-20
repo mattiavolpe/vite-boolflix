@@ -5,6 +5,7 @@ export const state = new reactive({
   searchMovieBaseApi: "https://api.themoviedb.org/3/search/movie",
   searchTvShowBaseApi: "https://api.themoviedb.org/3/search/tv",
   coverBaseUrl: "https://image.tmdb.org/t/p/w342",
+  genresBaseApi: "https://api.themoviedb.org/3/genre",
   apiKey: "47de7fcc53f94d3e0e183ea972c73ff3",
   searchText: "",
   lastSearched: "",
@@ -14,6 +15,10 @@ export const state = new reactive({
   fetchedTvShows: [],
   tvShowPages: null,
   activeTvShowPage: 0,
+  movieGenres: [],
+  tvShowGenres: [],
+  currentMovieGenre: "",
+  currentTvShowGenre: "",
   setUrl(type) {
     if (type === "movie") {
       return `${this.searchMovieBaseApi}?api_key=${this.apiKey}&query=${this.lastSearched}&page=${this.activeMoviePage}`;
@@ -84,5 +89,24 @@ export const state = new reactive({
       let url = this.setUrl("tvShow");
       this.sendRequest("tvShow", url);
     }
+  },
+  fetchGenres(type) {
+    let url;
+    if (type === "movie") {
+      url = `${this.genresBaseApi}/movie/list?api_key=${this.apiKey}`;
+    } else {
+      url = `${this.genresBaseApi}/tv/list?api_key=${this.apiKey}`;
+    }
+    axios.get(url)
+    .then(response => {
+      if (type === "movie") {
+        this.movieGenres = response.data.genres;
+      } else {
+        this.tvShowGenres = response.data.genres;
+      }
+    })
   }
 })
+
+state.fetchGenres("movie");
+state.fetchGenres("tvShow");

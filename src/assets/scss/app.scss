@@ -11,3 +11,10 @@
 body {
   font-family: $font_family;
 }
+
+select {
+  background-color: $light;
+  color: $dark;
+  border-radius: 6px;
+  padding: 0 0.25rem;
+}
