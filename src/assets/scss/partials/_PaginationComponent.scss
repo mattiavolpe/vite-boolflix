@@ -1,5 +1,12 @@
 @use "./_variables.scss" as *;
 
+.pagination_wrapper {
+  max-height: 53px;
+  overflow-y: auto;
+  box-shadow: inset 0 -15px 5px -10px $medium;
+  border-radius: 6px;
+}
+
 .pagination {
   width: 35px;
   aspect-ratio: 1 / 1;

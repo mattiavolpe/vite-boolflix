@@ -6,6 +6,7 @@ export const state = new reactive({
   searchTvShowBaseApi: "https://api.themoviedb.org/3/search/tv",
   coverBaseUrl: "https://image.tmdb.org/t/p/w342",
   genresBaseApi: "https://api.themoviedb.org/3/genre",
+  welcomePageBaseApi: "https://api.themoviedb.org/3/trending",
   apiKey: "47de7fcc53f94d3e0e183ea972c73ff3",
   searchText: "",
   lastSearched: "",
@@ -19,10 +20,17 @@ export const state = new reactive({
   tvShowGenres: [],
   currentMovieGenre: "",
   currentTvShowGenre: "",
+  welcomePage: true,
   setUrl(type) {
     if (type === "movie") {
+      if (this.welcomePage) {
+        return `${this.welcomePageBaseApi}/movie/day?api_key=${this.apiKey}&page=${this.activeMoviePage}`;
+      }
       return `${this.searchMovieBaseApi}?api_key=${this.apiKey}&query=${this.lastSearched}&page=${this.activeMoviePage}`;
     } else {
+      if (this.welcomePage) {
+        return `${this.welcomePageBaseApi}/tv/day?api_key=${this.apiKey}&page=${this.activeTvShowPage}`;
+      }
       return `${this.searchTvShowBaseApi}?api_key=${this.apiKey}&query=${this.lastSearched}&page=${this.activeTvShowPage}`;
     }
   },
@@ -52,7 +60,7 @@ export const state = new reactive({
     }
   },
   fetchMovies() {
-    if (this.searchText === "") {
+    if (this.searchText === "" && !this.welcomePage) {
       this.searchText = "";
       return;
     }
@@ -63,7 +71,7 @@ export const state = new reactive({
     this.currentMovieGenre = "";
   },
   fetchTvShows() {
-    if (this.searchText === "") {
+    if (this.searchText === "" && !this.welcomePage) {
       this.searchText = "";
       return;
     }
@@ -108,5 +116,7 @@ export const state = new reactive({
   }
 })
 
+state.fetchMovies();
+state.fetchTvShows();
 state.fetchGenres("movie");
 state.fetchGenres("tvShow");
