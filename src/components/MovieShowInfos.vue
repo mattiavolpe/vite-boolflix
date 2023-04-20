@@ -13,39 +13,25 @@ export default {
   },
   props: {
     type: String,
-    movie: Object,
-    tvShow: Object,
+    item: Object,
   },
 }
 </script>
 
 <template>
-  <template v-if="type === 'movie'">
-    <div class="infos">
-      <h5 class="m-0">{{ movie.title }}</h5>
-      <p class="m-0" v-if="movie.title != movie.original_title">Original title: {{ movie.original_title }}</p>
+  <div class="infos">
+    <h5 v-if="type === 'movie'" class="m-0">{{ item.title }}</h5>
+    <h5 v-else class="m-0">{{ item.name }}</h5>
+    <p v-if="type === 'movie' && item.title != item.original_title" class="m-0">Original title: {{ item.original_title }}</p>
+    <p v-if="type === 'tvShow' && item.name != item.original_name" class="m-0">Original title: {{ item.original_name }}</p>
+    <hr class="my-1">
+    <div v-if="item.overview">
+      <p class="m-0">{{ item.overview }}</p>
       <hr class="my-1">
-      <div v-if="movie.overview">
-        <p class="m-0">{{ movie.overview }}</p>
-        <hr class="my-1">
-      </div>
-      <LanguageComponent :lang="movie.original_language"></LanguageComponent>
-      <ScoreComponent :vote="movie.vote_average"></ScoreComponent>
-      <CastGenresMovie :movie="movie"></CastGenresMovie>
     </div>
-  </template>
-  <template v-else>
-    <div class="infos">
-      <h5 class="m-0">{{ tvShow.name }}</h5>
-      <p class="m-0" v-if="tvShow.name != tvShow.original_name">Original title: {{ tvShow.original_name }}</p>
-      <hr class="my-1">
-      <div v-if="tvShow.overview">
-        <p class="m-0">{{ tvShow.overview }}</p>
-        <hr class="my-1">
-      </div>
-      <LanguageComponent :lang="tvShow.original_language"></LanguageComponent>
-      <ScoreComponent :vote="tvShow.vote_average"></ScoreComponent>
-      <CastGenresShow :show="tvShow"></CastGenresShow>
-    </div>
-  </template>
+    <LanguageComponent :lang="item.original_language"></LanguageComponent>
+    <ScoreComponent :vote="item.vote_average"></ScoreComponent>
+    <CastGenresMovie v-if="type === 'movie'" :movie="item"></CastGenresMovie>
+    <CastGenresShow v-else :show="item"></CastGenresShow>
+  </div>
 </template>

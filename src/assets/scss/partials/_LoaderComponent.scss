@@ -18,12 +18,12 @@
       opacity: 0.4;
       background-position: 0 0;
       background-clip: content-box;
-      animation: move 1s infinite linear;
+      animation: moves 1s infinite linear;
     }
   }
 }
 
-@keyframes move {
+@keyframes moves {
   from {
     background-position: 0 0;
   }
