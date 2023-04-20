@@ -61,6 +61,7 @@ export const state = new reactive({
 
     let url = this.setUrl("movie");
     this.sendRequest("movie", url);
+    this.currentMovieGenre = "";
   },
   fetchTvShows() {
     if (this.searchText === "") {
@@ -72,6 +73,7 @@ export const state = new reactive({
 
     let url = this.setUrl("tvShow");
     this.sendRequest("tvShow", url);
+    this.currentTvShowGenre = "";
   },
   newPage(n, type) {
     if (type === "movie") {
