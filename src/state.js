@@ -21,6 +21,7 @@ export const state = new reactive({
   currentMovieGenre: "",
   currentTvShowGenre: "",
   welcomePage: true,
+  loading: true,
   setUrl(type) {
     if (type === "movie") {
       if (this.welcomePage) {
@@ -42,6 +43,7 @@ export const state = new reactive({
         this.moviePages = response.data.total_pages;
         this.activeMoviePage = response.data.page;
         this.searchText = "";
+        this.loading = false;
       })
       .catch(error => {
         console.error(error.message);
@@ -53,6 +55,7 @@ export const state = new reactive({
         this.tvShowPages = response.data.total_pages;
         this.activeTvShowPage = response.data.page;
         this.searchText = "";
+        this.loading = false;
       })
       .catch(error => {
         console.error(error.message);
@@ -64,6 +67,8 @@ export const state = new reactive({
       this.searchText = "";
       return;
     }
+    this.loading = true;
+    this.fetchedMovies = [];
     this.lastSearched = this.searchText.toLowerCase();
     this.activeMoviePage = 1;
     let url = this.setUrl("movie");
@@ -75,6 +80,8 @@ export const state = new reactive({
       this.searchText = "";
       return;
     }
+    this.loading = true;
+    this.fetchedTvShows = [];
     this.lastSearched = this.searchText.toLowerCase();
     this.activeTvShowPage = 1;
     let url = this.setUrl("tvShow");
@@ -82,6 +89,7 @@ export const state = new reactive({
     this.currentTvShowGenre = "";
   },
   newPage(n, type) {
+    this.loading = true;
     if (type === "movie") {
       if (n === this.activeMoviePage) {
         return;

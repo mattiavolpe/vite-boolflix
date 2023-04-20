@@ -118,6 +118,6 @@ export default {
 
 <template>
   <p class="d-flex align-items-center justify-content-center mb-2">Language:
-    <img width="32" height="24" class="ms-2" :src="checkLanguage" :alt="`${lang} flag`">
+    <img width="28" height="21" class="ms-2" :src="checkLanguage" :alt="`${lang} flag`">
   </p>
 </template>

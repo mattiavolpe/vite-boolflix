@@ -27,7 +27,6 @@ export default {
       <SingleGenre v-for="genre in state.movieGenres" :genre="genre"></SingleGenre>
     </select>
   </div>
-
   <ul v-if="state.fetchedMovies.length > 0" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
     <SingleMovie v-for="movie in state.fetchedMovies" :movie="movie" :state="state"></SingleMovie>
   </ul>
