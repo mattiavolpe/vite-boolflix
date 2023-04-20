@@ -34,37 +34,3 @@ export default {
     <PaginationComponent :class="n === state.activeTvShowPage ? 'active' : ''" v-if="state.tvShowPages > 1" v-for="n in state.tvShowPages" @click="state.newPage(n, 'tvShow')" :page="n"></PaginationComponent>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .loading {
-
-    .img_wrapper {
-      position: relative;
-      width: fit-content;
-      margin: auto;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(90deg, #141414, #373737, #141414);
-        opacity: 0.4;
-        background-position: 0 0;
-        background-clip: content-box;
-        animation: move 1s infinite linear;
-      }
-    }
-  }
-
-  @keyframes move {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 250px 0;
-    }
-  }
-</style>
