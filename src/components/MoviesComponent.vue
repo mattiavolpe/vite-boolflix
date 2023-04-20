@@ -22,6 +22,6 @@ export default {
     <SingleMovie v-for="movie in state.fetchedMovies" :movie="movie" :state="state"></SingleMovie>
   </ul>
   <div class="d-flex align-items-center justify-content-center flex-wrap">
-    <PaginationComponent v-if="state.moviePages > 1" v-for="n in state.moviePages" @click="state.newPage(n, 'movie')" :page="n"></PaginationComponent>
+    <PaginationComponent :class="n === state.activeMoviePage ? 'active' : ''" v-if="state.moviePages > 1" v-for="n in state.moviePages" @click="state.newPage(n, 'movie')" :page="n"></PaginationComponent>
   </div>
 </template>

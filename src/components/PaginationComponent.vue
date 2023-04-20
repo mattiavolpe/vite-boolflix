@@ -1,8 +1,14 @@
 <script>
+import { state } from "./../state.js"
 export default {
   name: "PaginationComponent",
   props: {
     page: Number,
+  },
+  data() {
+    return {
+      state,
+    }
   },
 }
 </script>

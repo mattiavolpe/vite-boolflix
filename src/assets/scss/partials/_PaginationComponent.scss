@@ -9,6 +9,12 @@
   cursor: pointer;
   transition: 0.1s;
 
+  &.active {
+    color: $accent;
+    border-color: $accent;
+    box-shadow: inset 0 -2px 0 0 $accent;
+  }
+
   &:hover {
     color: $accent;
     border-color: $accent;

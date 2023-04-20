@@ -117,7 +117,7 @@ export default {
 </script>
 
 <template>
-  <p class="d-flex align-items-center justify-content-center mb-2">Language: {{ lang }}
+  <p class="d-flex align-items-center justify-content-center mb-2">Language:
     <img width="32" height="24" class="ms-2" :src="checkLanguage" :alt="`${lang} flag`">
   </p>
 </template>

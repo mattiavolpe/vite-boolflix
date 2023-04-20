@@ -22,6 +22,6 @@ export default {
     <SingleShow v-for="tvShow in state.fetchedTvShows" :tvShow="tvShow" :state="state"></SingleShow>
   </ul>
   <div class="d-flex align-items-center justify-content-center flex-wrap">
-    <PaginationComponent v-if="state.tvShowPages > 1" v-for="n in state.tvShowPages" @click="state.newPage(n, 'tvShow')" :page="n"></PaginationComponent>
+    <PaginationComponent :class="n === state.activeTvShowPage ? 'active' : ''" v-if="state.tvShowPages > 1" v-for="n in state.tvShowPages" @click="state.newPage(n, 'tvShow')" :page="n"></PaginationComponent>
   </div>
 </template>
