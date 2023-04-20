@@ -5,12 +5,19 @@ export default {
   components: {
     SearchComponent,
   },
+  methods: {
+    reloadApp() {
+      location.reload();
+    }
+  }
 }
 </script>
 
 <template>
   <header class="px-4 py-3 d-flex align-items-center justify-content-between flex-wrap">
-    <img class="py-2" height="45" src="./../assets/img/netflix_logo.png" alt="Netflix logo">
+    <a @click.prevent="reloadApp()" href="#">
+      <img class="py-2" height="45" src="./../assets/img/netflix_logo.png" alt="Netflix logo">
+    </a>
     <SearchComponent></SearchComponent>
   </header>
 </template>
