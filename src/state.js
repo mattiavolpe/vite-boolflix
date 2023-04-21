@@ -22,6 +22,11 @@ export const state = new reactive({
   currentTvShowGenre: "",
   welcomePage: true,
   loading: true,
+  /**
+   * Sets the URL to call to make the API request
+   * @param {String} type Specifies if it's a movie or a tv show
+   * @returns {String} The URL to call to request the API
+   */
   setUrl(type) {
     if (type === "movie") {
       if (this.welcomePage) {
@@ -35,6 +40,11 @@ export const state = new reactive({
       return `${this.searchTvShowBaseApi}?api_key=${this.apiKey}&query=${this.lastSearched}&page=${this.activeTvShowPage}`;
     }
   },
+  /**
+   * Makes the call to the API
+   * @param {String} type Specifies if it's a movie or a tv show
+   * @param {String} url The URL to call to request the API
+   */
   sendRequest(type, url) {
     if (type === "movie") {
       axios.get(url)
@@ -62,32 +72,38 @@ export const state = new reactive({
       })
     }
   },
-  fetchMovies() {
+  /**
+   * Starts the mechanism to call the API for movies or tv shows search
+   */
+  fetchMoviesShows(type) {
     if (this.searchText === "" && !this.welcomePage) {
       this.searchText = "";
       return;
     }
     this.loading = true;
-    this.fetchedMovies = [];
-    this.lastSearched = this.searchText.toLowerCase();
-    this.activeMoviePage = 1;
-    let url = this.setUrl("movie");
-    this.sendRequest("movie", url);
-    this.currentMovieGenre = "";
-  },
-  fetchTvShows() {
-    if (this.searchText === "" && !this.welcomePage) {
-      this.searchText = "";
-      return;
+    if (type === "movie") {
+      this.fetchedMovies = [];
+    } else {
+      this.fetchedTvShows = [];
     }
-    this.loading = true;
-    this.fetchedTvShows = [];
     this.lastSearched = this.searchText.toLowerCase();
-    this.activeTvShowPage = 1;
-    let url = this.setUrl("tvShow");
-    this.sendRequest("tvShow", url);
-    this.currentTvShowGenre = "";
+    if (type === "movie") {
+      this.activeMoviePage = 1;
+      let url = this.setUrl("movie");
+      this.sendRequest("movie", url);
+      this.currentMovieGenre = "";
+    } else {
+      this.activeTvShowPage = 1;
+      let url = this.setUrl("tvShow");
+      this.sendRequest("tvShow", url);
+      this.currentTvShowGenre = "";
+    }
   },
+  /**
+   * Asks for a new page
+   * @param {Number} n The page to ask for
+   * @param {String} type Specifies if it's a movie or a tv show
+   */
   newPage(n, type) {
     this.loading = true;
     if (type === "movie") {
@@ -106,6 +122,10 @@ export const state = new reactive({
       this.sendRequest("tvShow", url);
     }
   },
+  /**
+   * Retrieves the genres used by the API and uses them to populate the filter select
+   * @param {String} type Specifies if it's movie or tv show
+   */
   fetchGenres(type) {
     let url;
     if (type === "movie") {

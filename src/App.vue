@@ -17,8 +17,8 @@ export default {
     }
   },
   mounted() {
-    this.state.fetchMovies();
-    this.state.fetchTvShows();
+    this.state.fetchMoviesShows("movie");
+    this.state.fetchMoviesShows("tvShow");
     this.state.fetchGenres("movie");
     this.state.fetchGenres("tvShow");
   }
